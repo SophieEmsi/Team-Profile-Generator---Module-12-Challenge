@@ -1,3 +1,4 @@
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -13,3 +14,16 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+const questions = [
+    // define your questions here
+  ];
+  
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      // do something with the user's answers
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  
