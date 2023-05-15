@@ -82,13 +82,88 @@ const managerQuestions = [
     },
   ];
   
-  inquirer
-    .prompt(questions)
-    .then((answers) => {
-      // do something with the user's answers
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+
+  const teamMembers = [];
+
+function promptManager() {
+  inquirer.prompt(managerQuestions).then((answers) => {
+    const manager = new Manager(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.officeNumber
+    );
+    teamMembers.push(manager);
+    promptUser();
+  });
+}
+
+function promptEngineer() {
+  inquirer.prompt(engineerQuestions).then((answers) => {
+    const engineer = new Engineer(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.github
+    );
+    teamMembers.push(engineer);
+    promptUser();
+  });
+}
+
+function promptIntern() {
+  inquirer.prompt(internQuestions).then((answers) => {
+    const intern = new Intern(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.school
+    );
+    teamMembers.push(intern);
+    promptUser();
+  });
+}
+
+function promptUser() {
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          name: "choice",
+          message: "What would you like to do?",
+          choices: ["Add an engineer", "Add an intern", "Finish building team"],
+        },
+      ])
+      .then((answer) => {
+        switch (answer.choice) {
+          case "Add an engineer":
+            promptEngineer();
+            break;
+          case "Add an intern":
+            promptIntern();
+            break;
+          case "Finish building team":
+            const html = render(teamMembers);
+            fs.writeFile(outputPath, html, (err) => {
+              if (err) {
+                console.error(err);
+              } else {
+                console.log("Team file written to output directory.");
+              }
+            });
+            break; 
+        }
+      });
+  } 
+
+
+//   inquirer
+//     .prompt(questions)
+//     .then((answers) => {
+//       // do something with the user's answers
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
   
     
