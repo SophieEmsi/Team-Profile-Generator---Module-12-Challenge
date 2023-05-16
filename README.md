@@ -61,6 +61,10 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 
 ![Alt text](assets/Screenshot%202023-05-16%20at%2015.48.07.png)
 
+Here is the link to the html output file in my repository:
+
+https://github.com/SophieEmsi/Team-Profile-Generator---Module-12-Challenge/blob/main/Output/team.html
+
 ## License
 
 This project does not require a license.
