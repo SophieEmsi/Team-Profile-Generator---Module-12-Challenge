@@ -12,7 +12,7 @@ As a manager a user want to generate a webpage that displays my team's basic inf
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Mock-up](#mockup)
+* [Mock-up](#mock-up)
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
