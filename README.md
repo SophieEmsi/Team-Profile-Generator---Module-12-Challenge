@@ -1,142 +1,98 @@
-# Module 12 Object-Oriented Programming: Team Profile Generator
+# Team Profile Generator --- Module 12 Challenge
 
-## Your Task
+## Description
 
-Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
+The Team Profile Generator is a Node.js command-line application that enables users to create professional team profile webpages. Using the Inquirer package, the application prompts users to input information about their team members, including managers, engineers, and interns. Once all team members have been added, the application generates an HTML page with a clean layout, showcasing the team's structure and individual details. The generated webpage is saved as team.html using the file system module. This application simplifies the process of creating and sharing team profiles, providing a convenient and efficient solution for generating comprehensive team profiles.
 
 ## User Story
 
 As a manager a user want to generate a webpage that displays my team's basic info so that a user have quick access to their emails and GitHub profiles.
 
-## Instructions
- 
-* Create a command-line application that accepts accepts user input using the provided starter code.   
-  * Create classes for each team member provided and export them. The tests for these classes (in the `_tests_` directory) must ALL pass.     
-    * The first class is an `Employee` parent class with the following properties and methods:       
-      * `name`
-      * `id`
-      * `email`
-      * `getName()`
-      * `getId()`
-      * `getEmail()`
-      * `getRole()`&mdash;returns `'Employee'`     
-    * The other three classes will extend `Employee`.      
-    * In addition to `Employee`'s properties and methods, `Manager` will also have the following:
-      * `officeNumber`
-      * `getRole()`&mdash;overridden to return `'Manager'`
-    * In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
-      * `github`&mdash;GitHub username
-      * `getGithub()`
-      * `getRole()`&mdash;overridden to return `'Engineer'`
-    * In addition to `Employee`'s properties and methods, `Intern` will also have the following:
-      * `school`
-      * `getSchool()`
-      * `getRole()`&mdash;overridden to return `'Intern'`
-    * Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format.   
-  * Write code in `index.js` that uses inquirer to gather information about the development team members and creates objects for each team member using the correct classes as blueprints.
-    * When a user starts the application then they are prompted to enter the **team manager**’s:
-      * Name
-      * Employee ID
-      * Email address
-      * Office number
-    * When a user enters those requirements then the user is presented with a menu with the option to:
-      * Add an engineer
-      * Add an intern 
-      * Finish building the team
-    * When a user selects the **engineer** option then a user is prompted to enter the following and then the user is taken back to the menu:
-      * Engineer's Name
-      * ID
-      * Email
-      * GitHub username
-    * When a user selects the intern option then a user is prompted to enter the following and then the user is taken back to the menu:
-      * Intern’s name
-      * ID
-      * Email
-      * School
-    * When a user decides to finish building their team then they exit the application, and the HTML is generated.
-  * Call the `render` function (provided for you) and pass in an array containing all employee objects; 
-    * The `render` function will generate and return a block of HTML including templated divs for each employee!
-  * Create an HTML file using the HTML returned from the `render` function. 
-    * Write it to a file named `team.html` in the `output` folder. 
-    * You can use the provided variable `outputPath` to target this location.
+## Table of Contents
 
----
+* [Installation](#installation)
+* [Usage](#usage)
+* [Mock-up](#mockup)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
+
+## Installation
+
+Make sure that you have VS Code, terminal/gitbash, and Node.js installed on your computer before using this project. Follow these steps:
+
+1. Click the "Code" button in the GitHub repository and copy the link.
+2. In GitBash or terminal, run the command "git clone [paste link here]".
+3. Run the command "npm init -y" to install the Node Package Manager.
+4. Run the command "npm install inquirer" to install the npm package for inquirer.
+
+## Usage
+
+To create a team profile using the Team Profile Generator, follow these steps:
+
+1. Open your terminal or command prompt.
+
+2. Navigate to the root directory of the Team Profile Generator project in VS Code.
+
+3. Install the necessary dependencies by running the command npm install in the integrated terminal of VS Code. This will ensure that all required packages are installed.
+
+4. Open the index.js file in VS Code. This is where you will customize the prompts for each team member.
+
+5. Inside the index.js file, you will find three arrays: managerQuestions, engineerQuestions, and internQuestions. These arrays contain the prompts for the manager, engineer, and intern respectively. Customize the questions to gather the specific information you need for your team members.
+
+6. Save your changes to the index.js file.
+
+7. In the terminal or command prompt, run the command node index.js to start the application.
+
+8. Follow the prompts displayed in the terminal. Start by entering the details for the team manager, such as their name, employee ID, email, and office number. Once you have provided the information, press Enter.
+
+9. Continue adding team members by selecting the employee type (Manager, Engineer, or Intern) and entering their respective details. Repeat this step until you have added all the desired team members.
+
+10. After adding all team members, select the option "I'm done adding employees" from the prompt to generate the team profile.
+
+11. The Team Profile Generator will automatically generate an HTML file named team.html in the output directory.
+
+By following these instructions, you can easily use the Team Profile Generator to create a team profile with custom prompts and quickly generate a professional-looking webpage to showcase your team's information.
 
 ## Mock-Up
 
 The following image shows a mock-up of the generated HTML’s appearance and functionality:
 
-![HTML webpage titled “My Team” features five boxes listing employee names, titles, and other key info.](./Assets/14-object-oriented-programming-challenge-demo.png)
+![Alt text](assets/Screenshot%202023-05-16%20at%2015.48.07.png)
 
-The styling in the image is just an example, so feel free to add your own.
+## License
 
----
+This project does not require a license.
 
-## Getting Started
+## Contributing
 
-This Challenge will combine many of the skills we've covered so far. In addition to the User Story and Acceptance Criteria, we’ve provided some guidelines to help get started.
+If you would like to contribute to this project please follow the steps below:
 
-Your application should use [Jest](https://www.npmjs.com/package/jest) for running the unit tests and [Inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user. The application will be invoked by using the following command:
+1. Fork the repo
+2. Create a new branch (git checkout -b new-feature)
+3. Make your changes and commit them (git commit -am 'Add new feature')
+4. Push your changes to your fork (git push origin new-feature)
+5. Create a new pull request
 
-```bash
-node index.js
-```
+## Tests
 
----
+To run the tests for this project, you can follow these steps:
 
-## Hints
+1. Ensure you have Node.js installed on your machine. You can check if Node.js is installed by opening your terminal or command prompt and running the command node -v. If Node.js is not installed, you can download and install it from the official Node.js website (https://nodejs.org).
 
-* You will want to make your methods as pure as possible. This means try to make your methods simple so that they are easier to test.
+2. Open the integrated terminal in VS code from the directory you would like to run the tests.
 
-* The different employee types should all inherit some methods and properties from a base class of `Employee`.
- 
-* Be sure to test out each class and verify it generates an object with the correct structure and methods. This structure will be crucial in order for the provided `render` function to work!
-  
-* You may need to check if the `output` folder exists and create it if it does not.
+3. Once you are in the correct directory, run the test.js file by using the command node test.js. This will execute the JavaScript code in the file.
 
----
+4. The output of the test.js file will be displayed in the terminal or command prompt.
 
-## Grading Requirements
+5. Review the output in the terminal to see the result of running the test.js file to make sure the code is running correctly.
 
-This Challenge is graded based on the following criteria: 
+By following these instructions, you can execute the test.js file and view its output directly in the command line.
 
-### Deliverables: 25%
+## Questions
 
-* A sample HTML file generated using the application must be submitted.
+GitHub profile: https://github.com/SophieEmsi
 
-* Your GitHub repository containing your application code.
-
-### Technical Acceptance Criteria: 50%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-	* Uses the [Inquirer package](https://www.npmjs.com/package/inquirer).
-
-	* All tests pass using the [Jest package](https://www.npmjs.com/package/jest).
-
-  * The application must have `Employee`, `Manager`, `Engineer`, and `Intern` classes.
-
-### Repository Quality: 25%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality readme with description.
-
----
-
-## Review
-
-You are required to submit the following for review:
-
-* A sample HTML file generated using your application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+If you have any questions, please contact me at sophie@sophie.com.
